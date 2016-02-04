@@ -6,7 +6,7 @@ _pod()
   else
     _pod_cmds
   fi
-  
+
 }
 
 _pod_cmd_install()
@@ -70,7 +70,7 @@ _pod_cmd_setup()
 _pod_cmds()
 {
   local -a cmdlist
-  #cmdlist=(`pod --help | awk '/\*/ {print \$4}'`) 
+  #cmdlist=(`pod --help | awk '/\*/ {print \$4}'`)
   cmdlist=(
     "setup:Creates a directory at \`~/.cocoapods\' which will hold your spec-repos."
     "search:pod search [QUERY]. Searches for pods, ignoring case, whose name matches \`QUERY\'."
@@ -78,6 +78,7 @@ _pod_cmds()
     "install:pod install [PROJECT]. Downloads all dependencies defined in \`Podfile\' and creates an Xcode Pods library project in \`./Pods\'."
     "repo:Managing spec-repos"
     "spec:Managing PodSpec files"
+    "update:pod update [PROJECT]. Same as install, but updates outdated pods."
   )
   _pod_base_options
   _describe 'Pod commands' cmdlist
