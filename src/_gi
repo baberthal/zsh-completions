@@ -1,0 +1,12 @@
+#compdef gi
+
+__all_gi_available() {
+  gi_available=($(gi list | tr ',' '\n'))
+}
+
+local -a gi_available
+
+__all_gi_available
+_values -s , 'what' $gi_available[@]
+
+#  vim: set ts=2 sw=2 tw=0 ft=zsh et :
