@@ -86,6 +86,10 @@ _diskutil() {
           _arguments \
             '(-plist)-plist[emit a property list instead of normal human-readable output]'
           ;;
+
+        info*|unmount*|umount|mount*)
+          _path_files
+          ;;
       esac
       ;;
   esac
