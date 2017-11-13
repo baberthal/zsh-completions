@@ -1,6 +1,6 @@
-#compdef trash-put trash
+#compdef rslsync
 # ------------------------------------------------------------------------------
-# Copyright (c) 2016 Github zsh-users - http://github.com/zsh-users
+# Copyright (c) 2017 Github zsh-users - http://github.com/zsh-users
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -28,31 +28,34 @@
 # Description
 # -----------
 #
-#  Completion script for trash-put a tool from trash management package trash-cli (http://code.google.com/p/trash-cli).
+#  Completion script for resilio sync (https://getsync.com/).
 #
 # ------------------------------------------------------------------------------
 # Authors
 # -------
 #
-#  * Jindřich Pilař (https://github.com/JindrichPilar)
+#  * Fabian Klötzl (https://github.com/kloetzl)
 #
 # ------------------------------------------------------------------------------
 
+_rslsync(){
+  integer ret=1
+  local -a args
+  args+=(
+    '(-)--help[Print help]'
+    '(--help)--config[Use a configuration file]:file:_files'
+    '(--help)--dump-sample-config[Print a sample configuration file]'
+    '(--help)--generate-secret[Generate a read/write key]::version:(2)'
+    '(--help)--get-ro-secret[Get the read-only key associated to a read/write key]:key:'
+    '(--help)--identity[Creates user identity]:name:'
+    '(--help)--license[Apply owner license]:file:_files'
+    '(--help)--log[Set log file]:file:_files'
+    '(--help)--nodaemon[Do not daemonize]'
+    '(--help)--storage[Storage path for identity and license]:path:_files -/'
+    '(--help)--webui.listen[Set the webui listening interface]:ip\:port:'
+  )
+  _arguments $args[@] && ret=0
+  return ret
+}
 
-_arguments -C \
-  '--version[display version information]' \
-  {-h,--help}'[display usage information]' \
-  {-d,--directory}'[remove empty directories - ignored (for GNU rm compabilty)]' \
-  {-f,--force}'[ignore nonexistent arguments and never prompt - ignored (for GNU rm compabilty)]' \
-  {-i,--interactive}'[prompt before every removal - ignored (for GNU rm compabilty)]' \
-  {-r,-R,--recursive}'[remove directories and their content recursively - ignored (for GNU rm compabilty)]' \
-  {-v,--verbose}'[explain what is being done]' \
-  '*: :_files'
-
-# Local Variables:
-# mode: Shell-Script
-# sh-indentation: 2
-# indent-tabs-mode: nil
-# sh-basic-offset: 2
-# End:
-# vim: ft=zsh sw=2 ts=2 et
+_rslsync
