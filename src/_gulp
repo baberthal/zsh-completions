@@ -1,0 +1,29 @@
+#compdef gulp
+
+# Borrowed from grunt-cli
+# http://gruntjs.com/
+#
+# Copyright (c) 2012 Tyler Kellen, contributors
+# Licensed under the MIT license.
+# https://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+
+# TODO: rewrite this with a modern zsh compdef
+compls=$(gulp --tasks-simple)
+completions=(${=compls})
+compadd -- $completions
+
+# _gulp() {
+#   local context state state_desc line
+#   typeset -A opt_args
+
+#   _arguments \
+#     '(-h --help)'{-h,--help}'[show help information]' \
+#     '(-v --version)'{-v,--version}'[print global and local gulp versions]' \
+#     '--require=[require a module before running the gulpfile]:module:_files -/' \
+#     '(-f --gulpfile)'{-f,--gulpfile=}'[manually set gulpfile]:gulpfile:_files -/' \
+#     '--cwd=[manually set CWD]:directory:_files -/' \
+#     '--verify' \
+#     '--tasks-simple[print a plaintext list of tasks for the loaded gulpfile]'
+# }
+
+# _gulp "$@"
